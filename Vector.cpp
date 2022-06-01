@@ -135,7 +135,7 @@ class Vector
         return;
     }
 
-    void resize(int count, int value = 0)
+    void resize(int count, T value = 0)
     {
         if(count >= this -> m_cap)
         {
