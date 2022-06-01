@@ -82,11 +82,11 @@ class Vector
                 this-> m_buff[i] = other.m_buff[i];
             }
     }
-    int& operator[](int index)
+    auto& operator[](int index)
     {
         return this -> m_buff[index];
     }
-    int& At(int index)
+    auto& At(int index)
     {
         if(index < 0 || index > m_size)
         {
@@ -94,11 +94,11 @@ class Vector
         }
         return this->m_buff[index];
     }
-    int& Front()
+    auto& Front()
     {
         return m_buff[0];
     }
-    int& Back()
+    auto& Back()
     {
         return m_buff[m_size - 1];
     }
@@ -139,7 +139,7 @@ class Vector
     {
         if(count >= this -> m_cap)
         {
-            reserve(count);
+            reserve(2*count);
         
             for(int i = 0; i < count; ++i)
             {
@@ -183,6 +183,15 @@ class Vector
             m_buff = m_tmp;
             m_cap = m_size;
         }
+    }
+
+    void Showall() const
+    {
+        for(int i = 0; i < m_cap; ++i)
+        {
+            std::cout << m_buff[i] << " ";
+        }
+        std::cout << std::endl;
     }
     void Show() const
     {
@@ -247,6 +256,18 @@ int main()
     std::cout << "Creating a vectors A and C " << std::endl;
     Vector <int> C;
     Vector <int> A;
+    Vector <char>D;
+    std::cout << "Push_backs for D vector " << std::endl;
+    D.push_back('A');
+    D.push_back('B');
+    D.push_back('C');
+    D.push_back('D');
+    D.push_back('E');
+    D.push_back('A');
+    D.resize(28);
+    D.capacity();
+    D.Showall();
+    std::cout << D.Front() << std::endl;
     std::cout << "Push_backs for C vector " << std::endl;
     C.push_back(1);
     C.push_back(2);
